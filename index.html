@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Minho Kang — Quant & Engineer</title>
+<meta name="description" content="Minho Kang — Quantitative analyst in European energy markets and software engineer. Machine learning, trading systems, data pipelines.">
+<meta property="og:title" content="Minho Kang — Quant & Engineer">
+<meta property="og:description" content="ML-driven trading systems for European energy markets, production data infrastructure, and full-stack engineering.">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/90128043?v=4">
+<link rel="icon" href="https://avatars.githubusercontent.com/u/90128043?v=4&s=64">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f5f1; --surface:#ffffff; --ink:#15171a; --muted:#5d636b; --faint:#9aa0a6;
+  --line:#e3e1da; --accent:#d9480f; --accent-soft:#fdebe2; --up:#0b8a5c; --chip:#f0eee8;
+  --grid:rgba(21,23,26,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1013; --surface:#15181c; --ink:#e9eaec; --muted:#9aa1aa; --faint:#5f6670;
+    --line:#252a30; --accent:#ff7a3d; --accent-soft:#2a1a12; --up:#3ccf91; --chip:#1c2025;
+    --grid:rgba(255,255,255,.035);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1013; --surface:#15181c; --ink:#e9eaec; --muted:#9aa1aa; --faint:#5f6670;
+  --line:#252a30; --accent:#ff7a3d; --accent-soft:#2a1a12; --up:#3ccf91; --chip:#1c2025;
+  --grid:rgba(255,255,255,.035);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:"Inter","Pretendard Variable",Pretendard,-apple-system,system-ui,sans-serif; font-feature-settings:"cv11","ss01","tnum"; font-size:16px; line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+a{color:inherit}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+@media (max-width:600px){.wrap{padding:0 16px}}
+
+/* Language toggle */
+[data-lang="en"] [lang="ko"]{display:none}
+[data-lang="ko"] [lang="en"]{display:none}
+
+/* Nav */
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px}
+.brand{font-weight:600;text-decoration:none;font-size:15px;display:flex;align-items:center;gap:10px}
+.brand .dot{width:8px;height:8px;border-radius:50%;background:var(--up);box-shadow:0 0 0 3px color-mix(in srgb,var(--up) 25%,transparent);animation:pulse 2.4s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 6px transparent}}
+.links{display:flex;gap:22px;font-size:14px}
+.links a{text-decoration:none;color:var(--muted)}
+.links a:hover{color:var(--ink)}
+@media (max-width:760px){.links{display:none}}
+.tools{display:flex;gap:6px}
+.btn-sm{font:500 12px "IBM Plex Mono","Pretendard Variable",monospace;background:var(--chip);border:1px solid var(--line);color:var(--ink);padding:6px 10px;border-radius:6px;cursor:pointer}
+.btn-sm:hover{border-color:var(--faint)}
+
+/* Hero */
+.hero{padding:88px 0 56px}
+.hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr;gap:32px}.hero{padding:56px 0 40px}}
+.eyebrow{font:500 13px "IBM Plex Mono","Pretendard Variable",monospace;color:var(--accent);letter-spacing:.02em;margin-bottom:18px;display:flex;gap:10px;align-items:center}
+.eyebrow::before{content:"";width:24px;height:1px;background:var(--accent)}
+h1{font-size:clamp(36px,6vw,58px);line-height:1.08;letter-spacing:-.025em;font-weight:700;margin-bottom:22px}
+h1 .soft{color:var(--muted);font-weight:500}
+.lede{font-size:18px;color:var(--muted);max-width:560px;margin-bottom:30px}
+[lang="ko"].lede{font-size:17px}
+[lang="ko"]{word-break:keep-all}
+h1[lang="ko"],h2,h3{font-family:"Pretendard Variable",Pretendard,"Inter",system-ui,sans-serif}
+h1[lang="en"]{letter-spacing:-.035em}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:500;font-size:15px;padding:11px 18px;border-radius:8px;border:1px solid var(--line);background:var(--surface)}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn:hover{transform:translateY(-1px)}
+.btn svg{width:16px;height:16px}
+
+/* Ticker card */
+.ticker{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 1px 0 var(--line),0 20px 40px -24px rgba(0,0,0,.25)}
+.ticker-head{display:flex;justify-content:space-between;align-items:baseline;font:500 12px "IBM Plex Mono","Pretendard Variable",monospace;color:var(--muted);margin-bottom:6px}
+.ticker-val{font:600 30px "IBM Plex Mono","Pretendard Variable",monospace;letter-spacing:-.02em}
+.ticker-val small{font-size:13px;color:var(--up);margin-left:8px;font-weight:500}
+.ticker svg{width:100%;height:140px;display:block;margin:10px 0 14px}
+.ticker-rows{display:grid;grid-template-columns:1fr 1fr;gap:10px;border-top:1px dashed var(--line);padding-top:14px}
+.kv{font:12px "IBM Plex Mono","Pretendard Variable",monospace;color:var(--muted)}
+.kv b{display:block;color:var(--ink);font-size:15px;font-weight:600;margin-top:2px}
+
+/* Sections */
+section{padding:64px 0;border-top:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:36px}
+.sec-num{font:500 13px "IBM Plex Mono","Pretendard Variable",monospace;color:var(--accent)}
+h2{font-size:26px;letter-spacing:-.015em;font-weight:700}
+
+/* Experience */
+.job{display:grid;grid-template-columns:180px 1fr;gap:28px;padding:26px 0;border-bottom:1px solid var(--line)}
+.job:last-child{border-bottom:0}
+@media (max-width:700px){.job{grid-template-columns:1fr;gap:8px}}
+.when{font:13px "IBM Plex Mono","Pretendard Variable",monospace;color:var(--muted);padding-top:3px}
+.when .loc{display:block;color:var(--faint);margin-top:2px}
+.role{font-size:19px;font-weight:600;line-height:1.35}
+.org{color:var(--muted);font-size:15px;margin-bottom:12px}
+.org b{color:var(--ink);font-weight:500}
+.job ul{list-style:none;display:grid;gap:8px}
+.job li{position:relative;padding-left:18px;color:var(--muted);font-size:15px}
+.job li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:1px;background:var(--faint)}
+.job li strong{color:var(--ink);font-weight:600}
+.badge{display:inline-block;font:600 12px "IBM Plex Mono","Pretendard Variable",monospace;color:var(--up);background:color-mix(in srgb,var(--up) 12%,transparent);padding:2px 8px;border-radius:4px;margin-left:8px;vertical-align:2px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tag{font:12px "IBM Plex Mono","Pretendard Variable",monospace;background:var(--chip);border:1px solid var(--line);padding:3px 8px;border-radius:5px;color:var(--muted)}
+
+/* Projects */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media (max-width:760px){.proj-grid{grid-template-columns:1fr}}
+.proj{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px;text-decoration:none;transition:border-color .15s,transform .15s}
+.proj:hover{border-color:var(--accent);transform:translateY(-2px)}
+.proj-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.proj-kind{font:500 11px "IBM Plex Mono","Pretendard Variable",monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);background:var(--accent-soft);padding:3px 8px;border-radius:4px}
+.proj-arrow{color:var(--faint);font-size:18px}
+.proj:hover .proj-arrow{color:var(--accent)}
+.proj h3{font:600 17px "IBM Plex Mono","Pretendard Variable",monospace;margin-bottom:8px;word-break:break-word}
+.proj p{color:var(--muted);font-size:15px;flex:1}
+.proj .tags{margin-top:16px}
+.proj.featured{grid-column:1/-1;display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
+@media (max-width:760px){.proj.featured{grid-template-columns:1fr}}
+.featured-viz{border:1px dashed var(--line);border-radius:10px;padding:14px;font:12px "IBM Plex Mono","Pretendard Variable",monospace;color:var(--muted)}
+.featured-viz svg{width:100%;height:auto;display:block}
+.forks{margin-top:22px;font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
+.forks a{font-family:"IBM Plex Mono","Pretendard Variable",monospace;font-size:13px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.forks a:hover{border-color:var(--accent)}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media (max-width:700px){.skills{grid-template-columns:1fr}}
+.skill{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px}
+.skill-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.skill-head h3{font-size:16px;font-weight:600}
+.meter{display:flex;gap:3px}
+.meter i{width:14px;height:6px;border-radius:2px;background:var(--line)}
+.meter i.on{background:var(--accent)}
+
+/* Education & writing */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+.edu{padding:0 0 22px;margin-bottom:22px;border-bottom:1px solid var(--line)}
+.edu:last-child{border:0;margin:0}
+.edu h3{font-size:17px;font-weight:600;line-height:1.4}
+.edu .meta{font:13px "IBM Plex Mono","Pretendard Variable",monospace;color:var(--muted);margin:4px 0 10px}
+.edu p{font-size:15px;color:var(--muted)}
+.edu p b{color:var(--ink);font-weight:500}
+.posts{list-style:none;display:grid;gap:10px}
+.posts a{display:flex;gap:14px;align-items:flex-start;text-decoration:none;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.posts a:hover{border-color:var(--accent)}
+.posts .n{font:600 13px "IBM Plex Mono","Pretendard Variable",monospace;color:var(--accent);padding-top:2px}
+.posts .t{font-size:15px;font-weight:500;line-height:1.45}
+.posts .s{font:12px "IBM Plex Mono","Pretendard Variable",monospace;color:var(--faint);margin-top:4px}
+
+/* Contact */
+.contact{text-align:center;padding:88px 0}
+.contact h2{font-size:clamp(28px,4.5vw,40px);margin-bottom:14px}
+.contact p{color:var(--muted);margin-bottom:28px}
+.contact .cta{justify-content:center}
+footer{border-top:1px solid var(--line);padding:24px 0;font:12px "IBM Plex Mono","Pretendard Variable",monospace;color:var(--faint)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.brand .dot{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="dot"></span>Minho Kang</a>
+    <div class="links">
+      <a href="#experience"><span lang="en">Experience</span><span lang="ko">경력</span></a>
+      <a href="#projects"><span lang="en">Projects</span><span lang="ko">프로젝트</span></a>
+      <a href="#skills"><span lang="en">Skills</span><span lang="ko">기술</span></a>
+      <a href="#education"><span lang="en">Education</span><span lang="ko">학력</span></a>
+      <a href="#contact"><span lang="en">Contact</span><span lang="ko">연락처</span></a>
+    </div>
+    <div class="tools">
+      <button class="btn-sm" id="langBtn" aria-label="Switch language">한국어</button>
+      <button class="btn-sm" id="themeBtn" aria-label="Toggle theme">◐</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span lang="en">Quant · Engineer · Berlin</span><span lang="ko">퀀트 · 엔지니어 · 베를린</span></div>
+      <h1 lang="en">Turning market insight into <span class="soft">production trading systems.</span></h1>
+      <h1 lang="ko">시장 인사이트를 <span class="soft">실거래 가능한 시스템으로.</span></h1>
+      <p class="lede" lang="en">I'm Minho Kang, a quantitative analyst specialising in European energy markets. I build end-to-end machine learning pipelines, backtesting frameworks and production infrastructure for automated trading — and now lead engineering at an early-stage startup in Berlin.</p>
+      <p class="lede" lang="ko">유럽 에너지시장을 전문으로 하는 퀀트 애널리스트 강민호입니다. 머신러닝 End-to-End 파이프라인, 백테스팅 프레임워크, 자동매매를 위한 프로덕션 인프라를 구축해 왔고, 현재는 베를린의 초기 스타트업에서 엔지니어링을 이끌고 있습니다.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects"><span lang="en">View projects</span><span lang="ko">프로젝트 보기</span> →</a>
+        <a class="btn" href="https://github.com/minhokg" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+        <a class="btn" href="mailto:minho.kg97@gmail.com"><span lang="en">Email</span><span lang="ko">이메일</span></a>
+      </div>
+    </div>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-head"><span>DE-LU · INTRADAY</span><span id="clock">--:--</span></div>
+      <div class="ticker-val"><span id="px">€ 87.42</span><small id="chg">▲ 2.31%</small></div>
+      <svg id="spark" viewBox="0 0 300 140" preserveAspectRatio="none"></svg>
+      <div class="ticker-rows">
+        <div class="kv">P&amp;L 2025<b style="color:var(--up)">€550K+</b></div>
+        <div class="kv">TARGET 2026<b>€3M+</b></div>
+        <div class="kv">STACK<b>Python · AWS</b></div>
+        <div class="kv">MODELS<b>ML · Stats</b></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">01</span><h2><span lang="en">Experience</span><span lang="ko">경력</span></h2></div>
+
+    <div class="job reveal">
+      <div class="when">2026.09 — <span lang="en">Present</span><span lang="ko">현재</span><span class="loc">Berlin · Remote</span></div>
+      <div>
+        <div class="role">Lead Software Engineer</div>
+        <div class="org"><b>Catherly</b> · Tech</div>
+        <ul lang="en">
+          <li>Designing the architecture and building the full stack of an early-stage web service with React, TypeScript and Node.js.</li>
+          <li>Designing and building the service database and data-management environment on Supabase.</li>
+          <li>Building Python web-scraping and automated data collection &amp; processing pipelines.</li>
+        </ul>
+        <ul lang="ko">
+          <li>React, TypeScript/JavaScript, Node.js로 초기 웹 서비스의 아키텍처를 설계하고 Full-Stack 개발을 수행하고 있습니다.</li>
+          <li>Supabase 기반으로 서비스 데이터베이스를 설계·구축하고 데이터 관리 환경을 구성하고 있습니다.</li>
+          <li>Python으로 웹 데이터 스크래핑 및 자동화된 데이터 수집·처리 파이프라인을 설계하고 있습니다.</li>
+        </ul>
+        <div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">Supabase</span><span class="tag">Python</span></div>
+      </div>
+    </div>
+
+    <div class="job reveal">
+      <div class="when">2024.06 — 2026.07<span class="loc">Hamburg</span></div>
+      <div>
+        <div class="role">Quantitative Analyst <span class="badge">€550K+ P&amp;L</span></div>
+        <div class="org"><b>Citadel FlexPower Services GmbH</b> · Quantitative Trading</div>
+        <ul lang="en">
+          <li>Generated <strong>€550K+ P&amp;L in 2025</strong>; continuously improved ML-driven European energy-market strategies and ran live strategies targeting <strong>€3M+ P&amp;L in 2026</strong>.</li>
+          <li>Joined as an early member of the Quantitative Trading Desk and helped build the systems and processes across data, modelling, strategy development, trading and monitoring.</li>
+          <li>Owned end-to-end strategy development in Python: feature engineering &amp; selection, ML modelling, hyperparameter optimisation, backtesting, performance evaluation and live deployment.</li>
+          <li>Built and operated production data &amp; trading infrastructure on Airflow and AWS, automating data ingestion, training, forecasting and execution; built P&amp;L attribution, position and risk dashboards with BigQuery SQL and Grafana.</li>
+        </ul>
+        <ul lang="ko">
+          <li>2025년 <strong>€550K+ P&amp;L</strong>을 창출했으며, 머신러닝 기반 유럽 에너지 시장 전략을 지속적으로 개선하여 <strong>2026년 €3M+ P&amp;L</strong>을 목표로 실거래 전략을 운영했습니다.</li>
+          <li>Quantitative Trading Desk의 초기 멤버로 합류하여 데이터, 모델링, 전략 개발, 트레이딩 및 모니터링 전반의 시스템과 운영 프로세스 구축에 주도적으로 참여했습니다.</li>
+          <li>Feature Engineering, Feature Selection, ML 모델 개발 및 하이퍼파라미터 최적화부터 백테스팅, 성과 평가, 실거래 배포까지 End-to-End 전략 개발을 수행했습니다.</li>
+          <li>Airflow와 AWS 기반 Production 데이터·트레이딩 인프라를 구축·운영하고, BigQuery SQL과 Grafana로 P&amp;L, 전략별 손익 Attribution, 포지션 및 Risk Monitoring Dashboard를 구축했습니다.</li>
+        </ul>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Airflow</span><span class="tag">AWS</span><span class="tag">BigQuery</span><span class="tag">Grafana</span></div>
+      </div>
+    </div>
+
+    <div class="job reveal">
+      <div class="when">2023.03 — 2023.08<span class="loc">Seoul</span></div>
+      <div>
+        <div class="role"><span lang="en">Associate (Contract)</span><span lang="ko">주임 (계약직)</span></div>
+        <div class="org"><b><span lang="en">Samsung Securities</span><span lang="ko">삼성증권</span></b> · <span lang="en">Sales Strategy Team</span><span lang="ko">영업추진팀</span></div>
+        <ul lang="en">
+          <li>Built real-time financial and performance monitoring dashboards in SQL.</li>
+          <li>Performed valuations of <strong>683 foreign companies</strong> through financial modelling to support investment decisions.</li>
+          <li>Analysed large-scale transaction data for a client-refund project following a UK fee-policy change, identifying eligible clients and validating data.</li>
+        </ul>
+        <ul lang="ko">
+          <li>SQL을 활용하여 실시간 재무·성과 모니터링 Dashboard를 개발했습니다.</li>
+          <li>재무 모델링 및 기업가치 분석을 통해 <strong>683개 외국계 기업</strong>의 Valuation을 수행하여 투자 의사결정을 지원했습니다.</li>
+          <li>영국 수수료 정책 변경에 따른 고객 환급 프로젝트에서 대규모 거래 데이터를 분석하고 환급 대상 산출 및 데이터 검증을 수행했습니다.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job reveal">
+      <div class="when">2023.01 — 2023.02<span class="loc">Seoul</span></div>
+      <div>
+        <div class="role"><span lang="en">Intern</span><span lang="ko">인턴</span></div>
+        <div class="org"><b><span lang="en">Research &amp; Research</span><span lang="ko">리서치앤리서치</span></b> · <span lang="en">Public Opinion Polling</span><span lang="ko">여론조사팀</span></div>
+        <ul lang="en">
+          <li>Cleaned and analysed survey data for the Ministry of Oceans and Fisheries with R and SQL.</li>
+          <li>Used statistical methods to assign interviewers so that survey samples stayed unbiased.</li>
+        </ul>
+        <ul lang="ko">
+          <li>R과 SQL을 이용해 해양수산부 여론조사 데이터를 정리하고 분석했습니다.</li>
+          <li>표본이 편향되지 않도록 통계 기법을 활용하여 면접원을 배정했습니다.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job reveal">
+      <div class="when">2022.03 — 2023.08<span class="loc">Seongnam</span></div>
+      <div>
+        <div class="role"><span lang="en">Youth Policy Activist</span><span lang="ko">청년정책활동가</span></div>
+        <div class="org"><b><span lang="en">Seongnam City Hall</span><span lang="ko">성남시청</span></b> · <span lang="en">Youth Policy Division</span><span lang="ko">청년정책과</span></div>
+        <ul lang="en">
+          <li>Discussed social and environmental issues facing young people and relayed policy priorities to local government.</li>
+          <li>Took part in climate and environmental policy discussions, deepening an interest in climate action and the energy transition.</li>
+        </ul>
+        <ul lang="ko">
+          <li>청년 세대가 직면한 사회·환경적 이슈와 정책 과제를 논의하고 청년들의 의견을 지방정부에 전달했습니다.</li>
+          <li>기후변화 및 환경 관련 정책 논의에 참여하며 기후행동과 에너지 전환에 대한 관심을 발전시켰습니다.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">02</span><h2><span lang="en">Open-source projects</span><span lang="ko">오픈소스 프로젝트</span></h2></div>
+
+    <div class="proj-grid">
+      <a class="proj featured reveal" href="https://github.com/minhokg/mbdcor_fs" target="_blank" rel="noopener">
+        <div>
+          <div class="proj-top"><span class="proj-kind"><span lang="en">Master's thesis</span><span lang="ko">석사 논문</span></span></div>
+          <h3>mbdcor_fs</h3>
+          <p lang="en">Feature selection via <b>Markov Boundary Discovery with Distance Correlation (MBDcor)</b> for nonlinear binary classification. Combines marginal dependence screening, residual-based conditional dependence tests, random subspace exploration, stability aggregation and adaptive pruning — benchmarked against Boruta on synthetic and real-world data.</p>
+          <p lang="ko">비선형 이진 분류 문제를 위한 <b>거리 상관(Distance Correlation) 기반 Markov Boundary 탐색</b> 피처 선택 프레임워크입니다. 주변 의존성 스크리닝, 잔차 기반 조건부 의존성 검정, 랜덤 부분공간 탐색, 안정성 기반 집계, 적응적 가지치기를 결합하고, 합성·실제 데이터에서 Boruta와 성능을 비교했습니다.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Feature Selection</span><span class="tag">Causal Discovery</span><span class="tag">Statistics</span></div>
+        </div>
+        <div class="featured-viz" aria-hidden="true">
+          <svg viewBox="0 0 260 170">
+            <g stroke="var(--line)" stroke-width="1.2" fill="none">
+              <line x1="130" y1="85" x2="70" y2="40"/><line x1="130" y1="85" x2="200" y2="38"/>
+              <line x1="130" y1="85" x2="60" y2="125"/><line x1="130" y1="85" x2="205" y2="130"/>
+              <line x1="70" y1="40" x2="25" y2="20"/><line x1="200" y1="38" x2="240" y2="70"/>
+              <line x1="60" y1="125" x2="22" y2="150"/><line x1="205" y1="130" x2="245" y2="155"/>
+            </g>
+            <g fill="var(--surface)" stroke="var(--faint)" stroke-width="1.2">
+              <circle cx="25" cy="20" r="6"/><circle cx="240" cy="70" r="6"/><circle cx="22" cy="150" r="6"/><circle cx="245" cy="155" r="6"/><circle cx="150" cy="15" r="6"/><circle cx="110" cy="158" r="6"/>
+            </g>
+            <g fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6">
+              <circle cx="70" cy="40" r="9"/><circle cx="200" cy="38" r="9"/><circle cx="60" cy="125" r="9"/><circle cx="205" cy="130" r="9"/>
+            </g>
+            <circle cx="130" cy="85" r="13" fill="var(--accent)"/>
+            <text x="130" y="89" text-anchor="middle" font-size="11" font-family="IBM Plex Mono" fill="var(--surface)" font-weight="600">Y</text>
+          </svg>
+          <div style="margin-top:6px"><span style="color:var(--accent)">●</span> <span lang="en">Markov boundary of target Y</span><span lang="ko">타깃 Y의 Markov boundary</span></div>
+        </div>
+      </a>
+
+      <a class="proj reveal" href="https://github.com/minhokg/stock_forecast_rnn" target="_blank" rel="noopener">
+        <div class="proj-top"><span class="proj-kind">Deep Learning</span><span class="proj-arrow">↗</span></div>
+        <h3>stock_forecast_rnn</h3>
+        <p lang="en">Stock price forecasting comparing Vanilla RNN, LSTM, Seq2Seq and Attention architectures on historical Google stock data — with preprocessing, training and evaluation workflows.</p>
+        <p lang="ko">Google 주가 데이터를 대상으로 Vanilla RNN, LSTM, Seq2Seq, Attention 구조를 비교한 시계열 예측 프로젝트입니다. 전처리, 학습, 평가 워크플로를 포함합니다.</p>
+        <div class="tags"><span class="tag">TensorFlow</span><span class="tag">LSTM</span><span class="tag">Attention</span><span class="tag">Time Series</span></div>
+      </a>
+
+      <a class="proj reveal" href="https://github.com/minhokg/heteroscedasticity_analysis" target="_blank" rel="noopener">
+        <div class="proj-top"><span class="proj-kind">Probabilistic ML</span><span class="proj-arrow">↗</span></div>
+        <h3>heteroscedasticity_analysis</h3>
+        <p lang="en">Models heteroscedastic uncertainty by comparing an MSE-trained network with a probabilistic network that predicts both mean and variance via Gaussian negative log-likelihood.</p>
+        <p lang="ko">MSE로 학습한 신경망과 가우시안 음의 로그우도(NLL)로 평균과 분산을 함께 예측하는 확률적 신경망을 비교해 이분산 불확실성을 모델링합니다.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Uncertainty</span><span class="tag">Gaussian NLL</span></div>
+      </a>
+
+      <a class="proj reveal" href="https://github.com/minhokg/maql_game" target="_blank" rel="noopener">
+        <div class="proj-top"><span class="proj-kind">Game Theory · RL</span><span class="proj-arrow">↗</span></div>
+        <h3>maql_game</h3>
+        <p lang="en">Multi-agent Q-learning in repeated games, comparing naive independent learners with LOLA (Learning with Opponent-Learning Awareness) to study cooperation and convergence.</p>
+        <p lang="ko">반복 게임에서의 Multi-Agent Q-Learning을 다루며, 독립 학습 에이전트와 LOLA(상대 학습 인식) 에이전트를 비교해 협력과 수렴 양상을 분석합니다.</p>
+        <div class="tags"><span class="tag">Reinforcement Learning</span><span class="tag">LOLA</span><span class="tag">Jupyter</span></div>
+      </a>
+
+      <a class="proj reveal" href="https://github.com/minhokg/bess-optimizer" target="_blank" rel="noopener">
+        <div class="proj-top"><span class="proj-kind">Energy · Optimisation</span><span class="proj-arrow">↗</span></div>
+        <h3>bess-optimizer</h3>
+        <p lang="en">Fork of FlexPower's three-market battery energy storage (BESS) optimisation model, implemented in Python with Pyomo.</p>
+        <p lang="ko">FlexPower의 3개 시장 배터리 에너지 저장장치(BESS) 최적화 모델(Python · Pyomo) 포크입니다.</p>
+        <div class="tags"><span class="tag">Pyomo</span><span class="tag">BESS</span><span class="tag">Energy Markets</span></div>
+      </a>
+    </div>
+
+    <div class="forks reveal">
+      <span lang="en">More on GitHub:</span><span lang="ko">GitHub에서 더 보기:</span>
+      <a href="https://github.com/minhokg/bh-agent-model" target="_blank" rel="noopener">bh-agent-model</a>
+      <a href="https://github.com/minhokg?tab=repositories" target="_blank" rel="noopener"><span lang="en">all repositories →</span><span lang="ko">전체 저장소 →</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">03</span><h2><span lang="en">Skills</span><span lang="ko">보유 기술</span></h2></div>
+    <div class="skills">
+      <div class="skill reveal">
+        <div class="skill-head"><h3><span lang="en">Quantitative analysis</span><span lang="ko">정량 분석</span></h3><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+        <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">R</span><span class="tag">Machine Learning</span><span class="tag">Statistics</span></div>
+      </div>
+      <div class="skill reveal">
+        <div class="skill-head"><h3><span lang="en">Energy markets</span><span lang="ko">에너지시장 분석</span></h3><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+        <div class="tags"><span class="tag" lang="en">European energy markets</span><span class="tag" lang="ko">유럽 에너지시장</span><span class="tag" lang="en">Market structure &amp; price formation</span><span class="tag" lang="ko">시장구조 · 가격형성</span><span class="tag" lang="en">Energy market data</span><span class="tag" lang="ko">에너지시장 데이터</span></div>
+      </div>
+      <div class="skill reveal">
+        <div class="skill-head"><h3><span lang="en">Data &amp; visualisation</span><span lang="ko">데이터 분석 · 시각화</span></h3><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+        <div class="tags"><span class="tag">BigQuery</span><span class="tag">Grafana</span><span class="tag" lang="en">Data pipelines</span><span class="tag" lang="ko">데이터 파이프라인</span></div>
+      </div>
+      <div class="skill reveal">
+        <div class="skill-head"><h3>Software engineering</h3><div class="meter"><i class="on"></i><i class="on"></i><i></i></div></div>
+        <div class="tags"><span class="tag">AWS</span><span class="tag">Airflow</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">Supabase</span></div>
+      </div>
+    </div>
+    <p class="reveal" style="margin-top:18px;font-size:14px;color:var(--muted)"><span lang="en">Languages — Korean (native), English (professional working)</span><span lang="ko">언어 — 한국어 (원어민), 영어 (업무 가능)</span></p>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap two">
+    <div>
+      <div class="sec-head reveal"><span class="sec-num">04</span><h2><span lang="en">Education</span><span lang="ko">학력</span></h2></div>
+      <div class="edu reveal">
+        <h3>Master of Data Science for Public Policy</h3>
+        <div class="meta">Hertie School, Berlin · 2023.09 — 2026.07 · GPA 3.9</div>
+        <p lang="en"><b>Thesis:</b> Markov Boundary Discovery with Distance Correlation for Feature Selection in Classification Problems. Founder of the Sustainable Finance Group, researching links between corporate environmental performance and sustainable investing using ESG data. Coursework: Machine Learning, Deep Learning, Algorithmic Game Theory, Emission Pricing.</p>
+        <p lang="ko"><b>논문:</b> Markov Boundary Discovery with Distance Correlation for Feature Selection in Classification Problems. Sustainable Finance Group을 창립해 ESG 데이터로 기업 환경성과와 지속가능투자의 연관성을 연구했습니다. 주요 과목: Machine Learning, Deep Learning, Algorithmic Game Theory, Emission Pricing.</p>
+      </div>
+      <div class="edu reveal">
+        <h3><span lang="en">B.S. Applied Statistics</span><span lang="ko">응용통계학과 학사</span></h3>
+        <div class="meta"><span lang="en">Dankook University</span><span lang="ko">단국대학교</span> · 2018.03 — 2023.08 · GPA 4.15</div>
+        <p lang="en">Coursework: Financial Engineering, Machine Learning, Time Series, Regression, Multivariate Statistics, Probability.</p>
+        <p lang="ko">주요 과목: 금융공학, 머신러닝, 시계열 분석, 회귀분석, 다변량통계, 확률론.</p>
+      </div>
+    </div>
+    <div>
+      <div class="sec-head reveal"><span class="sec-num">05</span><h2><span lang="en">Writing</span><span lang="ko">기고</span></h2></div>
+      <ul class="posts">
+        <li class="reveal"><a href="https://slowlybeautiful.com/article/37" target="_blank" rel="noopener"><span class="n">01</span><div><div class="t">유럽 전력시장에서 퀀트로서 일한다는 것은?</div><div class="s" lang="en">What it means to work as a quant in European power markets</div><div class="s" lang="ko">slowlybeautiful.com</div></div></a></li>
+        <li class="reveal"><a href="https://slowlybeautiful.com/article/40" target="_blank" rel="noopener"><span class="n">02</span><div><div class="t">유럽 전력시장 퀀트 트레이딩에서 머신러닝은 어떻게 사용될까? (1편) 데이터</div><div class="s" lang="en">ML in European power quant trading, Part 1: Data</div><div class="s" lang="ko">slowlybeautiful.com</div></div></a></li>
+        <li class="reveal"><a href="https://slowlybeautiful.com/article/41" target="_blank" rel="noopener"><span class="n">03</span><div><div class="t">유럽 전력시장 퀀트 트레이딩에서 머신러닝은 어떻게 사용될까? (2편) 모델</div><div class="s" lang="en">ML in European power quant trading, Part 2: Models</div><div class="s" lang="ko">slowlybeautiful.com</div></div></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap reveal">
+    <h2 lang="en">Let's talk markets, models or code.</h2>
+    <h2 lang="ko">시장, 모델, 코드 — 무엇이든 이야기해요.</h2>
+    <p lang="en">Open to conversations about quantitative trading, energy markets and data engineering.</p>
+    <p lang="ko">퀀트 트레이딩, 에너지 시장, 데이터 엔지니어링에 관한 대화를 환영합니다.</p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:minho.kg97@gmail.com">minho.kg97@gmail.com</a>
+      <a class="btn" href="https://github.com/minhokg" target="_blank" rel="noopener">github.com/minhokg</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© <span id="yr">2026</span> Minho Kang</span><span>Berlin · Hamburg · Seoul</span></div></footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+
+  // Language
+  var langBtn=document.getElementById('langBtn');
+  function setLang(l){root.setAttribute('data-lang',l);root.lang=l;langBtn.textContent=l==='en'?'한국어':'English';store('lang',l)}
+  var saved=store('lang');
+  setLang(saved||((navigator.language||'').toLowerCase().indexOf('ko')===0?'ko':'en'));
+  langBtn.onclick=function(){setLang(root.getAttribute('data-lang')==='en'?'ko':'en')};
+
+  // Theme
+  var t=store('theme'); if(t) root.setAttribute('data-theme',t);
+  document.getElementById('themeBtn').onclick=function(){
+    var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    var next=cur==='dark'?'light':'dark'; root.setAttribute('data-theme',next); store('theme',next);
+  };
+
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  // Decorative intraday price sparkline (illustrative, not real data)
+  var svg=document.getElementById('spark'),N=96,W=300,H=140,pts=[],v=80,seed=7;
+  function rnd(){seed=(seed*9301+49297)%233280;return seed/233280}
+  for(var i=0;i<N;i++){var h=i/N*24;var shape=18*Math.exp(-Math.pow(h-8,2)/6)+24*Math.exp(-Math.pow(h-19,2)/5)-22*Math.exp(-Math.pow(h-13,2)/8);v=v*0.7+(70+shape)*0.3+(rnd()-0.5)*7;pts.push(v)}
+  function draw(){
+    var mn=Math.min.apply(null,pts)-4,mx=Math.max.apply(null,pts)+4;
+    var d=pts.map(function(p,i){return (i?'L':'M')+(i/(N-1)*W).toFixed(1)+','+(H-(p-mn)/(mx-mn)*H).toFixed(1)}).join('');
+    svg.innerHTML='<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--accent)" stop-opacity=".22"/><stop offset="1" stop-color="var(--accent)" stop-opacity="0"/></linearGradient></defs>'+
+      '<path d="'+d+'L'+W+','+H+'L0,'+H+'Z" fill="url(#g)"/>'+
+      '<path d="'+d+'" fill="none" stroke="var(--accent)" stroke-width="1.8" vector-effect="non-scaling-stroke"/>';
+    var last=pts[N-1],first=pts[0],c=(last-first)/first*100;
+    document.getElementById('px').textContent='€ '+last.toFixed(2);
+    var ch=document.getElementById('chg');ch.textContent=(c>=0?'▲ ':'▼ ')+Math.abs(c).toFixed(2)+'%';ch.style.color=c>=0?'var(--up)':'var(--accent)';
+  }
+  draw();
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce) setInterval(function(){pts.shift();var p=pts[pts.length-1];pts.push(p*0.85+80*0.15+(rnd()-0.5)*8);draw()},1400);
+  function tick(){var d=new Date();document.getElementById('clock').textContent=d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Berlin'})+' BERLIN'}
+  tick();setInterval(tick,30000);
+
+  // Reveal on scroll
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08}):null;
+  document.querySelectorAll('.reveal').forEach(function(el){io?io.observe(el):el.classList.add('in')});
+})();
+</script>
+</body>
+</html>
